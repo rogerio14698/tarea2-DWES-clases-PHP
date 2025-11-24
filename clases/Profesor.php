@@ -6,7 +6,7 @@
         
         public $asignatura;
 
-        public $id;
+        public int $id;
 
         public $nombre;
 
@@ -14,7 +14,11 @@
 
 
         //Constructor
-        public function __construct($titular = false, $asignatura){
+        //Se puede hacer como un objeto de la clase Asignatura.
+        public function __construct($id, $nombre, $mail, Asignatura $asignatura, $titular = false){
+            $this->id = $id;
+            $this->nombre = $nombre;
+            $this->mail = $mail;
             $this->asignatura = $asignatura;
         }
 
@@ -39,11 +43,13 @@
 
         //Metodo de crear un profesor de muestra.
 
-        public static function crearProfesoreDeMuestra(){
+        public static function crearProfesoresDeMuestra(){
+            $asignaturas = Asignatura::crearAsignaturaDeMuestra();
             return [
-                new Profesor(false, "Lengua"),
-                new Profesor(false, "Lengua"),
-                new Profesor(false, "Lengua"),
+                new Profesor(1, "Steve Wozniak", "steve@apple.com", $asignaturas[0]),
+                new Profesor(2, "Ada Lovelace", "ada@gmail.com", $asignaturas[2]),
+                new Profesor(3, "Taylor Otwell", "taylor@laravel.com", $asignaturas[1]),
+                new Profesor(4, "Rasmus Lerdoff", "rasmus@php.com", $asignaturas[3]),
             ];
         }
 

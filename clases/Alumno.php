@@ -12,7 +12,7 @@ class Alumno extends Miembro{
 
     //Constructor:
         //Para crear los alumnos por defecto, se da valores a asignaturas y a curso abonado para que al llamar no dé error.
-    public function __construct($id, $nombre, $apellidos, $mail, $edad, $asignaturas = ["No Tiene"], $cursoAbonado = false){
+    public function __construct($id, $nombre, $apellidos, $mail, $edad, $asignaturas = [], $cursoAbonado = false){
         parent::__construct($id, $nombre, $apellidos, $mail);
         $this->edad = $edad;
         $this->asignaturas = $asignaturas;
@@ -30,13 +30,30 @@ class Alumno extends Miembro{
     //Esta funcion, acepta una asignatura como parametro, y por in_array busca si hay alguna coincidencia 
     //Caso exista no deja que el alumno se matricule dos veces en la misma asignatura.
     public function matricularseEnAsignatura($asignatura){
+        foreach ($this->asignaturas as $a){
+            if ($a->nombre === $asignatura->nombre){
+                return "El alumno ya esta matriculado en esta asignatura: $asignatura->nombre.";
+            }
+        }
+        //Si no encuentra coincidencias.
+        $this->asignaturas[] = $asignatura;
+            return "El alumno ha sido matriculado en $asignatura->nombre correctamente.";
+        /*
         if(in_array($asignatura, $this->asignaturas)){
-            return "El alumno ya esta matriculado en esta asignatura: $asignatura.";
+            return "El alumno ya esta matriculado en esta asignatura: $asignatura->nombre.";
         }else{
             $this->asignaturas[] = $asignatura;
-            return "El alumno ha sido matriculado en $asignatura correctamente.";
+            return "El alumno ha sido matriculado en $asignatura->nombre correctamente.";
         }
+        */
     }
+
+    //Crear get nombde asignatura. 
+    public function getNombreAsignatura(): string {
+        //fn es una funcion anonima, de manera muy corta, se usa para operaciones simples. 
+        //es una funcion sin nombre, con un parámetro.
+        return implode(" ,", array_map(fn($a) => $a->nombre, $this->asignaturas));
+    }    
 
     //Crear alumnos de muestra
 
@@ -51,7 +68,7 @@ class Alumno extends Miembro{
         new Alumno(7, "Lucía", "Jiménez", "lucia.jimenez@email.com", 20),
         new Alumno(8, "Jorge", "Pérez", "jorge.perez@email.com", 22),
         new Alumno(9, "Elena", "Romero", "elena.romero@email.com", 23),
-        new Alumno(10, "Pablo", "Torres", "pablo.torres@email.com", 2),
+        new Alumno(10, "Pablo", "Torres", "pablo.torres@email.com", 24),
         ];
         
 
