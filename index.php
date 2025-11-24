@@ -6,6 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tarea 2 DWES</title>
     <style>
+    .nav,
+    a {
+        text-decoration: none;
+        font-size: 20px;
+        padding: 10px
+    }
+
     .table {
         border: 1px solid black;
         border-collapse: collapse;
@@ -22,6 +29,7 @@
 </head>
 
 <body>
+    <h1>Sistema de gestion de un centro educativo || Simulación</h1>
     <?php
         require("clases/Miembro.php");
         require("clases/Alumno.php");
@@ -32,7 +40,7 @@
         $profesores = Profesor::crearProfesoresDeMuestra();
         $asignaturas = Asignatura::crearAsignaturaDeMuestra();
     ?>
-    <nav>
+    <nav class="nav">
         <a href="biblioteca.php">Biblioteca</a>
         <a href="index.php">Index</a>
         <a href="triangle.php">Generador de Triangulo</a>
@@ -205,12 +213,21 @@
             }
         
         ?>
+    <table class="table">
 
-    <ul>
+        <tr>
+            <th>Nombre</th>
+            <th>Créditos</th>
+        </tr>
         <?php foreach ($asignaturasConAlumnos as $asg): ?>
-        <li><?= $asg->nombre ?></li>
+        <tr>
+
+            <td><?= $asg->nombre ?></td>
+            <td><?= $asg->creditos ?></td>
+
+        </tr>
         <?php endforeach ?>
-    </ul>
+    </table>
 
 
 
