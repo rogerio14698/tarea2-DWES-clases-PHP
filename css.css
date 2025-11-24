@@ -1,0 +1,33 @@
+.nav,
+a {
+    text-decoration: none;
+    font-size: 20px;
+    padding: 10px
+}
+
+.triangle {
+    border: 1px solid black;
+    padding: 10px;
+    margin: 15px;
+    display: inline-block;
+}
+
+h1,
+p {
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+
+.table {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 5px;
+
+}
+
+.table th,
+td {
+    border: 1px solid black;
+    padding: 5px;
+}

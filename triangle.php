@@ -5,14 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generagor del triangulo</title>
-    <style>
-    .nav,
-    a {
-        text-decoration: none;
-        font-size: 20px;
-        padding: 10px
-    }
-    </style>
+    <link rel="stylesheet" href="css.css">
 
 </head>
 
@@ -25,5 +18,31 @@
     </nav>
 
 </body>
+<?php require("clases/TriangleGenerator.php"); ?>
+<h1>Generador de Triangulo</h1>
+<p>Introduce un numero mayor que 0, caso contrario no va a aparecer nada.</p>
+<form method="post">
+    <label for="altura">Altura del Triangulo</label>
+    <input type="number" id="altura" name="altura">
+    <button type="submit">Generar</button>
+
+    <?php
+    if($_SERVER['REQUEST_METHOD'] === 'POST'){
+        $altura = intval($_POST['altura']);
+
+        $triangulo = generateTriangle($altura);
+
+        echo '<br>';
+        echo '<div class="triangle">';
+        echo $triangulo;
+        echo '</div>';
+    }
+
+    ?>
+
+
+
+</form>
+
 
 </html>
