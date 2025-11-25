@@ -79,6 +79,23 @@
         <?php endforeach; ?>
 
     </table>
+    <h2>Listado de todas las asignaturas</h2>
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Créditos</th>
+        </tr>
+        <?php foreach ($asignaturas as $asignatura): ?>
+        <tr>
+            <td><?= $asignatura->id ?></td>
+            <td><?= $asignatura->nombre ?></td>
+            <td><?= $asignatura->creditos ?></td>
+        </tr>
+        <?php endforeach; ?>
+    </table>
+
+
 
     <h2>ALUMNOS MENORES DE 23: Listado de alumnos menores de 23 años</h2>
     <table class="table">
